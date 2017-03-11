@@ -60,7 +60,7 @@ cp %{SOURCE1} ./pom.xml
 %pom_xpath_replace "pom:project/pom:version" "<version>%{version}</version>"
 
 # Fix jgoodies-forms artifactId
-%pom_xpath_replace "pom:dependency[pom:groupId[./text()='com.jgoodies']][pom:artifactId[./text()='forms']]/pom:artifactId" "
+%pom_xpath_replace "pom:dependency[pom:groupId[./text()='com.jgoodies']]/pom:artifactId" "
 	<artifactId>jgoodies-forms</artifactId>"
 
 # Fix missing version warnings
@@ -118,6 +118,9 @@ cp %{SOURCE1} ./pom.xml
 		</goals>
 	</execution>
 </executions>"
+
+# Alias
+%mvn_alias com.explodingpixels:%{name} com.explodingpixels:%{oname}
 
 # Fix jar name
 %mvn_file :%{name} %{name}-%{version} %{name}
